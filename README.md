@@ -44,4 +44,17 @@
 - `docker run -d -p --name test_site nginx` - To run nginx app with detached mode, port mapping and container name test_site
 - `docker rename test_site new_site` - To rename a named container
 
-*** Till now we have learnt to pull and start a container, stop a container, map a port from container to host, execute process from a container(bash), removing a container and also to name and rename a container.***
+***Till now we have learnt to pull and start a container, stop a container, map a port from container to host, execute process from a container(bash), removing a container and also to name and rename a container.***
+
+### Let's now learn to link our development files to files in the container using Docker Volumes:
+- Making our container listen to file changes in our local file system and update the changes in the files inside docker automatically
+- Try creating some files and folders inside docker, you wont be able to find them in the local file system.
+- We need to setup docker volumes by using `v` volume flag with mapping host file directory to container file directory
+- `docker -d -p 8080:80 --name website -v /home/user/website:/website nginx` - To map host directory with container directory using Docker Volumes
+- Now we can execute bash from container and see the directory `/website` containing the files of `/home/user/website` directory
+- Now if we make any changes in the directory it will be updated in both host and container.
+
+### Mapping files from host and running a website with docker:
+- `docker run -d -p 8080:80 --name final_site -v $(pwd):/usr/share/nginx/html nginx` - To run the nginx app container with files from host directory
+- Now you should be able to open the website in the mapped port from your host.
+- If you cannot see the website with your files there can be file permission issue. So change the file permission in the host with `chmod`

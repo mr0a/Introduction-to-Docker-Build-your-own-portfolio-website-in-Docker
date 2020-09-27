@@ -44,3 +44,4 @@
 - `docker run -d -p --name test_site nginx` - To run nginx app with detached mode, port mapping and container name test_site
 - `docker rename test_site new_site` - To rename a named container
 
+*** Till now we have learnt to pull and start a container, stop a container, map a port from container to host, execute process from a container(bash), removing a container and also to name and rename a container.***
